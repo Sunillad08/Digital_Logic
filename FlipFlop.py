@@ -15,5 +15,5 @@
 define function(Input1 , Input2 , clock)
 Input1 and Input2 : *args
 clock : *args should have same length as Inputs
-return output in list/tuple (decide one!)
+return output in list/tuple (decide!)
 '''

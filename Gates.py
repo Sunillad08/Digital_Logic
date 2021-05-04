@@ -1,4 +1,4 @@
-## Designing Gates logic for 
+## Designing flip flop logic for 
 '''
 1. AND
 2. OR
@@ -12,7 +12,8 @@
 # format to define functions
 
 '''
-define function(Inputs)
-Input : *args
-return output in list/tuple (decide one!)
+define function(Input1 , Input2 , clock)
+Input1 and Input2 : *args
+clock : *args should have same length as Inputs
+return output in list/tuple (decide!)
 '''
