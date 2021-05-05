@@ -7,6 +7,6 @@
 Contributors:
 > Sunil Lad
 
-> Parth Khanolakar
+> Parth Khanolkar
 
 > Shrirang Joshi
