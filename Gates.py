@@ -27,6 +27,19 @@ def logic_and(val1, val2):
   else:
     raise ValueError("Invalid Values!")
 
+def logic_or(val1, val2):
+  if ((isinstance(val1 , int) or isinstance(val1 , float)) and (isinstance(val2 , int) or isinstance(val2 , float))):      
+    normalize_logic_values(val1, val2)    
+    return(val1 or val2)
+  else:
+    raise ValueError("Invalid Values!")
+
+def logic_not(val, val2):
+  if ((isinstance(val1 , int) or isinstance(val1 , float)) and (isinstance(val2 , int) or isinstance(val2 , float))):      
+    normalize_logic_values(val1, val2)    
+    return(not(val))
+  else:
+    raise ValueError("Invalid Values!")
   
 if __name__ == "__main__":
     print(logic_and(1,0))
