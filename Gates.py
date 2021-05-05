@@ -47,3 +47,5 @@ def logic_nand(val1, val2):
 if __name__ == "__main__":
     print(logic_and(1,0))
     print(logic_and(1,1))
+    print(logic_and(0,1))
+    print(logic_and(0,0))
