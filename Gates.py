@@ -34,10 +34,13 @@ def logic_or(val1, val2):
   else:
     raise ValueError("Invalid Values!")
 
-def logic_not(val, val2):
-  if ((isinstance(val1 , int) or isinstance(val1 , float)) and (isinstance(val2 , int) or isinstance(val2 , float))):      
-    normalize_logic_values(val1, val2)    
-    return(not(val))
+def logic_not(val):
+  if ((isinstance(val , int) or isinstance(val , float))):      
+    normalize_logic_values(val)
+    if(not(val) == True):
+        return(1)
+    else:
+        return(0)
   else:
     raise ValueError("Invalid Values!")
 
