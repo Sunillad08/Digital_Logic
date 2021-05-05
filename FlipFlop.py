@@ -21,14 +21,8 @@ return output in list/tuple (decide!)
 '''
 Normalize values above 1 to 1 and below 1 to 0
 '''
-def normalize_logic_values(*args):
-    args = list(args)
-    for i in range(len(args)):
-        if args[i] > 0:
-            args[i] = 1
-        elif args[i] < 1:
-            args[i] = 0
-    return args
+
+from main_functions import *
 
 
 def nor_latch(s , r , clock):
