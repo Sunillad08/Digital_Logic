@@ -40,6 +40,9 @@ def logic_not(val, val2):
     return(not(val))
   else:
     raise ValueError("Invalid Values!")
+
+def logic_nand(val1, val2):
+  return logic_not(logic_and(val1, val2))
   
 if __name__ == "__main__":
     print(logic_and(1,0))
