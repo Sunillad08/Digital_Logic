@@ -49,6 +49,16 @@ def logic_nand(val1, val2):
 
 def logic_nor(val1, val2):
   return logic_not(logic_or(val1, val2))
+
+def logic_xor(val1, val2):
+  cp1 = logic_and(val1, logic_not(val2))
+  cp2 = logic_and(logic_not(val1), val2)
+  return(logic_or(cp1, cp2))
+
+def logic_xnor(val1, val2):
+  cp1 = logic_nor(val1, val2)
+  cp2 = logic_and(val1, val2)
+  return(logic_or(cp1, cp2)) 
   
 if __name__ == "__main__":
     print(logic_and(1,0))
