@@ -12,5 +12,5 @@ def normalize_logic_values(*args):
     return args
 
 def valid_value(*args):
-    if(isinstance(args,int) and isinstance(args,float)):
+    if(isinstance(args,int) or isinstance(args,float)):
         return(True)
