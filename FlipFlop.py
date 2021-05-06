@@ -26,7 +26,7 @@ from main_functions import *
 from Gates import *
 
 '''Nor latch'''
-def nor_latch(s , r , clock):
+def latch_nor(s , r , clock):
 
     # to check input is int or float only!
     if (isinstance(s , int) or isinstance(s , float)) and (isinstance(r , int) or isinstance(r , float)) and (isinstance(clock , int) or isinstance(clock , float)):
@@ -55,7 +55,7 @@ def nor_latch(s , r , clock):
         raise ValueError("Invalid Values!")
 
 '''Nand latch'''        
-def nand_latch(s , r , clock):
+def latch_nand(s , r , clock):
 
     # to check input is int or float only!
     if (isinstance(s , int) or isinstance(s , float)) and (isinstance(r , int) or isinstance(r , float)) and (isinstance(clock , int) or isinstance(clock , float)):
@@ -84,60 +84,56 @@ def nand_latch(s , r , clock):
         raise ValueError("Invalid Values!")
                 
 '''SR flip flop'''        
-def sr_flip_flop(s , r , clock , active = "high"):
+def flip_flop_sr(s , r , clock , active = "high"):
     if (isinstance(s , int) or isinstance(s , float)) and (isinstance(r , int) or isinstance(r , float)) and (isinstance(clock , int) or isinstance(clock , float)):
         '''Since Active High SR latch is same as nor latch'''
         if active.lower() == "high":
-            return nor_latch(s , r , clock) # SR latch logic
+            return latch_nor(s , r , clock) # SR latch logic
         
             '''Since Active Low SR latch is same as nand latch'''
         elif active.lower() == "low":
-            return nand_latch( s , r , clock) #S'R' logic
+            return latch_nand( s , r , clock) #S'R' logic
     else:
         raise SyntaxError("UnknownMode")
 
 '''D flip flop''' 
-def d_flip_flop(d , clock):
+def flip_flop_d(d , clock):
     if (isinstance(d , int) or isinstance(d , float)) and (isinstance(clock , int) or isinstance(clock , float)):
         '''D flip flop implementation using sr flip flop'''
         d ,clock = normalize_logic_values(d ,clock) # normalizing values
-        return sr_flip_flop(d , not(d) , clock) # D flip-flop from SR flip flop
+        return flip_flop_sr(d , not(d) , clock) # D flip-flop from SR flip flop
               
     # raising ValueError
     else:
         raise ValueError("Invalid Values!")
 
 '''T flip flop''' 
-def t_flip_flop(t , q , clock):
+def flip_flop_t(t , q , clock):
     if (isinstance(t , int) or isinstance(t , float)) and (isinstance(q , int) or isinstance(q , float)) and (isinstance(clock , int) or isinstance(clock , float)):
         '''T flip flop implementation using D flip flop'''
         t , q ,clock = normalize_logic_values(t , q ,clock) # normalizing values
         t = logic_xor(t , q)
-        return d_flip_flop(t , clock) # t flip-flop from d flip flop
+        return flip_flop_d(t , clock) # t flip-flop from d flip flop
      
     # raising ValueError
     else:
         raise ValueError("Invalid Values!")
 
-'''JK flip flop''' 
-def jk_flip_flop(j , k , clock):
+'''JK Normal and master slave flip flop''' 
+def flip_flop_jk(j , k , clock , master_slave = False):
     if (isinstance(j , int) or isinstance( j, float)) and (isinstance(k , int) or isinstance(k , float)) and (isinstance(clock , int) or isinstance(clock , float)):
         '''Same logic as SR flip flop'''
-        return sr_flip_flop(j , k , clock , active="high")
-    
-    # raising ValueError
-    else:
-        raise ValueError("Invalid Values!")
-    
-'''Master slave JK flip flop''' 
-def jk_master_flip_flop(j , k , clock):
-    if (isinstance(j , int) or isinstance( j, float)) and (isinstance(k , int) or isinstance(k , float)) and (isinstance(clock , int) or isinstance(clock , float)):
-        '''Same logic as SR flip flop'''
-        output = jk_flip_flop(j , k , clock)
-        if output == None:
-            return '-1 Q Complement'
+        # master slave configuration
+        if master_slave :
+            output = flip_flop_jk(j , k , clock) # calling self without master slave config
+            if output == None:
+                return '-1 Q Complement'
+            else:
+                return output
+        # normal JK flip flop
         else:
-            return output
+            return flip_flop_sr(j , k , clock , active="high")
+    
     # raising ValueError
     else:
         raise ValueError("Invalid Values!")
@@ -147,17 +143,17 @@ if __name__ == "__main__":
 
     def check_possible_combinations(func):
         print("Clock : 0")
-        print(func(0 , 0 , 0 ))
-        print(func(0 , 1 , 0 ))
-        print(func(1 , 0 , 0 ))
-        print(func(1 , 1 , 0 ))
+        print(func(0 , 0 , 0 , master_slave=True))
+        print(func(0 , 1 , 0 , master_slave=True))
+        print(func(1 , 0 , 0 , master_slave=True))
+        print(func(1 , 1 , 0 , master_slave=True))
         print("Clock : 1")
-        print(func(0 ,  0 , 1 ))
-        print(func(0 ,  1 , 1 ))
-        print(func(1 ,  0 , 1 ))
-        print(func(1 ,  1 , 1 ))
+        print(func(0 ,  0 , 1 , master_slave=True))
+        print(func(0 ,  1 , 1 , master_slave=True))
+        print(func(1 ,  0 , 1 , master_slave=True))
+        print(func(1 ,  1 , 1 , master_slave=True))
         print(f"Ended checking {func.__name__}\n")
     
-    #check_possible_combinations(nor_latch)
-    #check_possible_combinations(nand_latch)
-    check_possible_combinations(jk_master_flip_flop)
+    #check_possible_combinations(latch_nor)
+    #check_possible_combinations(latch_nand)
+    #check_possible_combinations(flip_flop_jk)
