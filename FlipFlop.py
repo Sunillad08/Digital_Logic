@@ -23,8 +23,9 @@ Normalize values above 1 to 1 and below 1 to 0
 '''
 
 from main_functions import *
+from Gates import *
 
-
+'''Nor latch'''
 def nor_latch(s , r , clock):
 
     # to check input is int or float only!
@@ -52,7 +53,8 @@ def nor_latch(s , r , clock):
     # raising ValueError
     else:
         raise ValueError("Invalid Values!")
-        
+
+'''Nand latch'''        
 def nand_latch(s , r , clock):
 
     # to check input is int or float only!
@@ -81,21 +83,57 @@ def nand_latch(s , r , clock):
     else:
         raise ValueError("Invalid Values!")
                 
+'''SR flip flop'''        
+def sr_flip_flop(s , r , clock , active = "high"):
+    if (isinstance(s , int) or isinstance(s , float)) and (isinstance(r , int) or isinstance(r , float)) and (isinstance(clock , int) or isinstance(clock , float)):
+        '''Since Active High SR latch is same as nor latch'''
+        if active.lower() == "high":
+            return nor_latch(s , r , clock) # SR latch logic
+        
+            '''Since Active Low SR latch is same as nand latch'''
+        elif active.lower() == "low":
+            return nand_latch( s , r , clock) #S'R' logic
+    else:
+        raise SyntaxError("UnknownMode")
+
+'''D flip flop''' 
+def d_flip_flop(d , clock):
+    if (isinstance(d , int) or isinstance(d , float)) and (isinstance(clock , int) or isinstance(clock , float)):
+        '''D flip flop implementation using sr flip flop'''
+        d ,clock = normalize_logic_values(d ,clock) # normalizing values
+        return sr_flip_flop(d , not(d) , clock) # D flip-flop from SR flip flop
+              
+    # raising ValueError
+    else:
+        raise ValueError("Invalid Values!")
+
+'''T flip flop''' 
+def t_flip_flop(t , q , clock):
+    if (isinstance(t , int) or isinstance(t , float)) and (isinstance(q , int) or isinstance(q , float)) and (isinstance(clock , int) or isinstance(clock , float)):
+        '''T flip flop implementation using D flip flop'''
+        t , q ,clock = normalize_logic_values(t , q ,clock) # normalizing values
+        t = logic_xor(t , q)
+        return d_flip_flop(t , clock) # t flip-flop from d flip flop
+     
+    # raising ValueError
+    else:
+        raise ValueError("Invalid Values!")
 
 if __name__ == "__main__":
 
     def check_possible_combinations(func):
         print("Clock : 0")
-        print(func(0 , 0, 0))
-        print(func(0 , 1, 0))
-        print(func(1 , 0, 0))
-        print(func(1 , 1, 0))
+        print(func(0 , 0 , 0 ))
+        print(func(0 , 1  , 0 ))
+        print(func(1 , 0 , 0 ))
+        print(func(1 , 1 ,  0 ))
         print("Clock : 1")
-        print(func(0 , 0, 1))
-        print(func(0 , 1, 1))
-        print(func(1 , 0, 1))
-        print(func(1 , 1, 1))
+        print(func(0 ,  0 , 1 ))
+        print(func(0 ,  1 , 1 ))
+        print(func(1 ,  0 , 1 ))
+        print(func(1 ,  1 , 1 ))
         print(f"Ended checking {func.__name__}\n")
     
-    check_possible_combinations(nor_latch)
-    check_possible_combinations(nand_latch)
+    #check_possible_combinations(nor_latch)
+    #check_possible_combinations(nand_latch)
+    check_possible_combinations(t_flip_flop)
