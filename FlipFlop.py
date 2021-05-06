@@ -24,7 +24,7 @@ Normalize values above 1 to 1 and below 1 to 0
 
 from main_functions import *
 
-
+'''Nor latch'''
 def nor_latch(s , r , clock):
 
     # to check input is int or float only!
@@ -52,7 +52,8 @@ def nor_latch(s , r , clock):
     # raising ValueError
     else:
         raise ValueError("Invalid Values!")
-        
+
+'''Nand latch'''        
 def nand_latch(s , r , clock):
 
     # to check input is int or float only!
@@ -81,21 +82,34 @@ def nand_latch(s , r , clock):
     else:
         raise ValueError("Invalid Values!")
                 
+'''SR latch'''        
+def sr_latch(s , r , clock , active = "high"):
+    '''Since Active High SR latch is same as nor latch'''
+    if active.lower() == "high":
+        return nor_latch(s , r , clock) # SR latch logic
+    
+        '''Since Active Low SR latch is same as nor latch'''
+    elif active.lower() == "low":
+        return nand_latch( s , r , clock) #S'R' logic
+    else:
+        raise SyntaxError("UnknownMode")
+
 
 if __name__ == "__main__":
 
     def check_possible_combinations(func):
         print("Clock : 0")
-        print(func(0 , 0, 0))
-        print(func(0 , 1, 0))
-        print(func(1 , 0, 0))
-        print(func(1 , 1, 0))
+        print(func(0 , 0, 0 , active="low"))
+        print(func(0 , 1, 0 , active="low"))
+        print(func(1 , 0, 0 , active="low"))
+        print(func(1 , 1, 0 , active="low"))
         print("Clock : 1")
-        print(func(0 , 0, 1))
-        print(func(0 , 1, 1))
-        print(func(1 , 0, 1))
-        print(func(1 , 1, 1))
+        print(func(0 , 0, 1 , active="low"))
+        print(func(0 , 1, 1 , active="low"))
+        print(func(1 , 0, 1 , active="low"))
+        print(func(1 , 1, 1 , active="low"))
         print(f"Ended checking {func.__name__}\n")
     
-    check_possible_combinations(nor_latch)
-    check_possible_combinations(nand_latch)
+    #check_possible_combinations(nor_latch)
+    #check_possible_combinations(nand_latch)
+    check_possible_combinations(sr_latch)
