@@ -119,14 +119,38 @@ def t_flip_flop(t , q , clock):
     else:
         raise ValueError("Invalid Values!")
 
+'''JK flip flop''' 
+def jk_flip_flop(j , k , clock):
+    if (isinstance(j , int) or isinstance( j, float)) and (isinstance(k , int) or isinstance(k , float)) and (isinstance(clock , int) or isinstance(clock , float)):
+        '''Same logic as SR flip flop'''
+        return sr_flip_flop(j , k , clock , active="high")
+    
+    # raising ValueError
+    else:
+        raise ValueError("Invalid Values!")
+    
+'''Master slave JK flip flop''' 
+def jk_master_flip_flop(j , k , clock):
+    if (isinstance(j , int) or isinstance( j, float)) and (isinstance(k , int) or isinstance(k , float)) and (isinstance(clock , int) or isinstance(clock , float)):
+        '''Same logic as SR flip flop'''
+        output = jk_flip_flop(j , k , clock)
+        if output == None:
+            return '-1 Q Complement'
+        else:
+            return output
+    # raising ValueError
+    else:
+        raise ValueError("Invalid Values!")
+        
+    
 if __name__ == "__main__":
 
     def check_possible_combinations(func):
         print("Clock : 0")
         print(func(0 , 0 , 0 ))
-        print(func(0 , 1  , 0 ))
+        print(func(0 , 1 , 0 ))
         print(func(1 , 0 , 0 ))
-        print(func(1 , 1 ,  0 ))
+        print(func(1 , 1 , 0 ))
         print("Clock : 1")
         print(func(0 ,  0 , 1 ))
         print(func(0 ,  1 , 1 ))
@@ -136,4 +160,4 @@ if __name__ == "__main__":
     
     #check_possible_combinations(nor_latch)
     #check_possible_combinations(nand_latch)
-    check_possible_combinations(t_flip_flop)
+    check_possible_combinations(jk_master_flip_flop)
