@@ -29,7 +29,7 @@ from Gates import *
 def latch_nor(s , r , clock):
 
     # to check input is int or float only!
-    if (isinstance(s , int) or isinstance(s , float)) and (isinstance(r , int) or isinstance(r , float)) and (isinstance(clock , int) or isinstance(clock , float)):
+    if (valid_value(s , r , clock)):
 
         # normalizing values
         s , r ,clock = normalize_logic_values(s, r, clock)
@@ -58,7 +58,7 @@ def latch_nor(s , r , clock):
 def latch_nand(s , r , clock):
 
     # to check input is int or float only!
-    if (isinstance(s , int) or isinstance(s , float)) and (isinstance(r , int) or isinstance(r , float)) and (isinstance(clock , int) or isinstance(clock , float)):
+    if (valid_value(s , r , clock)):
 
         # normalizing values
         s , r ,clock = normalize_logic_values(s, r, clock)
@@ -85,7 +85,7 @@ def latch_nand(s , r , clock):
                 
 '''SR flip flop'''        
 def flip_flop_sr(s , r , clock , active = "high"):
-    if (isinstance(s , int) or isinstance(s , float)) and (isinstance(r , int) or isinstance(r , float)) and (isinstance(clock , int) or isinstance(clock , float)):
+    if (valid_value(s , r , clock)):
         '''Since Active High SR latch is same as nor latch'''
         if active.lower() == "high":
             return latch_nor(s , r , clock) # SR latch logic
@@ -98,7 +98,7 @@ def flip_flop_sr(s , r , clock , active = "high"):
 
 '''D flip flop''' 
 def flip_flop_d(d , clock):
-    if (isinstance(d , int) or isinstance(d , float)) and (isinstance(clock , int) or isinstance(clock , float)):
+    if (valid_value(d , clock)):
         '''D flip flop implementation using sr flip flop'''
         d ,clock = normalize_logic_values(d ,clock) # normalizing values
         return flip_flop_sr(d , not(d) , clock) # D flip-flop from SR flip flop
@@ -109,7 +109,7 @@ def flip_flop_d(d , clock):
 
 '''T flip flop''' 
 def flip_flop_t(t , q , clock):
-    if (isinstance(t , int) or isinstance(t , float)) and (isinstance(q , int) or isinstance(q , float)) and (isinstance(clock , int) or isinstance(clock , float)):
+    if (valid_value(t , q , clock)):
         '''T flip flop implementation using D flip flop'''
         t , q ,clock = normalize_logic_values(t , q ,clock) # normalizing values
         t = logic_xor(t , q)
@@ -121,7 +121,7 @@ def flip_flop_t(t , q , clock):
 
 '''JK Normal and master slave flip flop''' 
 def flip_flop_jk(j , k , clock , master_slave = False):
-    if (isinstance(j , int) or isinstance( j, float)) and (isinstance(k , int) or isinstance(k , float)) and (isinstance(clock , int) or isinstance(clock , float)):
+    if (valid_value(j , k , clock)):
         '''Same logic as SR flip flop'''
         # master slave configuration
         if master_slave :

@@ -10,3 +10,10 @@ def normalize_logic_values(*args):
         elif args[i] < 1:
             args[i] = 0
     return args
+
+def valid_value(*args):
+    bgr = [(isinstance(all_values,int) or isinstance(all_values,float)) for all_values in args] 
+    if(all(bgr)):
+        return(True)
+    else:
+        return(False)
