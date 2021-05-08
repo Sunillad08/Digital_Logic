@@ -7,8 +7,8 @@ assignees: ''
 
 ---
 
-** Circuit name **
+**Circuit name**
 Explain circuit in short and how it functions
 
-** Resources **
+**Resources**
 Any link , book or documentation regarding circuit
