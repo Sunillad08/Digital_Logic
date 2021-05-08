@@ -149,14 +149,99 @@ class demultiplexer():
     def get_output_pin(self):
         return tuple(self.output_pins) # returns all pins current status
 
+
+class encoder():
+        def __check_valid_encoder_data(level):
+            if level != 2**(round(math.log2(level))):
+                approx_value = 2**round(math.log2(level))
+                raise ValueError(f"Invalid value : Do you mean {approx_value} ?") # invalid level
+        
+
+        # initializing encoder
+        def __init__(self, level):
+            self.level = level
+            self.__output_pins_count = round(math.log2(level))
+
+        def get_input(self, inputno):
+            # list format compulsion
+            if isinstance(inputno , list):
+                # binary only
+                for i in inputno:
+                    if i not in [0,1]:
+                        raise ValueError("Invalid value for input pins")
+
+                # suffiecient pins count checking
+                if len(inputno) != self.level:
+                    if len(inputno) > self.level:
+                        if(all(inputno[0:len(inputno) - self.level]) == 0):
+                           outputno = inputno[len(inputno) - self.level:]
+                           
+                        else:
+                           raise ValueError(f"Input value is large for a {self.level}:{self.__output_pins_count} required")
+                    else:
+                        outputno = inputno
+                        bg = len(inputno)
+                        for MSB_zero in range((self.level) - bg):
+                            outputno.insert(0,0)
+
+                else:
+                    outputno = inputno
+
+
+                # main logic
+                
+                
+                try:
+                    outputno.reverse()
+                    if(outputno.count(1) > 0):
+                        op_val = outputno.index(1)
+                        return(list(map(int,(bin(op_val))[2:])))
+                    else:
+                        return(None)
+                except :
+                    print("Error")
+
+
+                
+            else:
+                raise SyntaxError("Input should be in list or array")             
+        
+
 if __name__ == "__main__":
     # m = multiplexer([0,1,0,1,1,1,1,1,0,1,0,1,1,1,1,1,0,1,0,1,1,1,1,1,0,1,0,1,1,1,1,1] , 128)
     # print(m.get_input([1,1,1,1,1]))
     # print(m.update_data(32 , 0))
     # print(m.get_input([1,1,1,1,1]))
-
+    '''
     d = demultiplexer(1,32)
     print(d.get_current_pin())
     print(d.get_current_pin())
     print(d.set_select_pin([1,1,0,1,1]))
-    print(d.get_output_pin())
+    print(d.get_output_pin())'''
+
+    encode1 = encoder(4)
+    print(encode1.get_input([0,0,0,0]))
+    print(encode1.get_input([0,0,0,1]))
+    print(encode1.get_input([0,0,1,0]))
+    print(encode1.get_input([0,1,0,0]))
+    print(encode1.get_input([1,0,0,0]))
+    print(encode1.get_input([0,0,0,0,1,0]))
+    print(encode1.get_input([0,0,0,1,0,0,0]))
+    print(encode1.get_input(["a",3,4]))
+    print(encode1.get_input([2,3,4]))
+    print(encode1.get_input([1,0,1,0,0,0]))
+    print(encode1.get_input([1,1,0,0,0]))
+    
+    
+    encode2 = encoder(8)
+    print(encode2.get_input([0,0,0,0,0,0,0,0]))
+    print(encode2.get_input([0,0,0,0,0,0,0,1]))
+    print(encode2.get_input([0,0,0,0,0,0,1,0]))
+    print(encode2.get_input([0,0,0,0,0,1,0,0]))
+    print(encode2.get_input([0,0,0,0,1,0,0,0]))
+    print(encode2.get_input([0,0,0,1,0,0,0,0]))
+    print(encode2.get_input([0,0,1,0,0,0,0,0]))
+    print(encode2.get_input([0,1,0,0,0,0,0,0]))
+    print(encode2.get_input([1,0,0,0,0,0,0,0]))
+    
+    
