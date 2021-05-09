@@ -52,7 +52,6 @@ Reference Webisite : [tutorialspoint.com](https://www.tutorialspoint.com/digital
     - Comparator
 
 - [Counter](Counters.py)
-  - Basic counter
   - Ring counter
   - Jonhson counter
   - Ripple counter 
