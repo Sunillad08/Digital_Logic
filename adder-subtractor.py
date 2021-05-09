@@ -12,7 +12,7 @@ def half_adder(val1,val2):
     else:
         raise ValueError("Invalid Values!")
 
-def full_adder(val1,val2,carry_in):
+def full_adder(val1,val2,carry_in = 0):
     sum_ha, carry_ha = half_adder(val1,val2)[0],half_adder(val1,val2)[1]
     sum_fa = logic_xor(sum_ha,carry_in)
     carry_fa = logic_or(logic_and(sum_ha,carry_in),carry_ha)
@@ -28,7 +28,7 @@ def half_subtractor(val1,val2):
     else:
         raise ValueError("Invalid Values!")
 
-def full_subtractor(val1,val2,borrow_in):
+def full_subtractor(val1,val2,borrow_in = 0):
     diff_hs, borrow_hs = half_subtractor(val1,val2)[0], half_subtractor(val1,val2)[1]
     diff_fs = logic_xor(diff_hs, borrow_in)
     borrow_fs = logic_or(logic_and(logic_not(diff_hs),borrow_in),borrow_hs)
