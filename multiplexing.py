@@ -162,7 +162,7 @@ class encoder():
             self.level = level
             self.__output_pins_count = round(math.log2(level))
 
-        def get_input(self, inputno):
+        def encoder_get(self, inputno):
             # list format compulsion
             if isinstance(inputno , list):
                 # binary only
@@ -177,7 +177,7 @@ class encoder():
                            outputno = inputno[len(inputno) - self.level:]
                            
                         else:
-                           raise ValueError(f"Input value is large for a {self.level}:{self.__output_pins_count} required")
+                           raise ValueError(f"Input value is large for a {self.level}:{self.__output_pins_count} encoder required")
                     else:
                         outputno = inputno
                         bg = len(inputno)
@@ -204,44 +204,120 @@ class encoder():
 
                 
             else:
-                raise SyntaxError("Input should be in list or array")             
-        
+                raise SyntaxError("Input should be in list or array")
+
+
+
+class decoder():
+            def __check_valid_encoder_data(level):
+                if (not isinstance(level, int) or level < 0):
+                    raise ValueError("Invalid value!") # invalid level
+                    
+            def __init__(self, level):
+                self.level = level
+                self.__output_pins_count = (2 ** self.level)
+
+            def decoder_get(self, inputno):
+                #For list input
+                if isinstance(inputno , list):
+                    # binary only
+                    for i in inputno:
+                        if i not in [0,1]:
+                            raise ValueError("Invalid value for input pins")
+
+                    # suffiecient pins count checking
+                    if len(inputno) != self.level:
+                        if len(inputno) > self.level:
+                            if(all(inputno[0:len(inputno) - self.level]) == 0):
+                               outputno = inputno[len(inputno) - self.level:]
+
+                           
+                            else:
+                               raise ValueError(f"Input value is large for a {self.level}:{self.__output_pins_count} decoder required")
+                        else:
+                            outputno = inputno
+                            bg = len(inputno)
+                            for MSB_zero in range((self.level) - bg):
+                                outputno.insert(0,0)
+
+                            
+
+
+                        
+                
+
+                    else:
+                        outputno = inputno
+
+
+                    #main logic
+                    output_pin_int = int("".join([str(integer) for integer in outputno]),2)
+                    output = []
+                    for val in range (self.__output_pins_count):
+                        if(val == output_pin_int):
+                            output.append(1)
+                        else:
+                            output.append(0)
+                    return(output)
+                        
+                
+                # for NoneType input
+                elif inputno is None:
+                        outputno = []
+                        for zero_val in range (self.__output_pins_count):
+                            outputno.append(0)
+
+
+                        return outputno
+
+                        
+
+
+                        
+
+
+                    
+                
+                    
+                
+    
+                else:
+                    raise SyntaxError("Input should be in list or array")
 
 if __name__ == "__main__":
     # m = multiplexer([0,1,0,1,1,1,1,1,0,1,0,1,1,1,1,1,0,1,0,1,1,1,1,1,0,1,0,1,1,1,1,1] , 128)
     # print(m.get_input([1,1,1,1,1]))
     # print(m.update_data(32 , 0))
     # print(m.get_input([1,1,1,1,1]))
-    '''
+    
     d = demultiplexer(1,32)
     print(d.get_current_pin())
     print(d.get_current_pin())
     print(d.set_select_pin([1,1,0,1,1]))
-    print(d.get_output_pin())'''
+    print(d.get_output_pin())
 
     encode1 = encoder(4)
-    print(encode1.get_input([0,0,0,0]))
-    print(encode1.get_input([0,0,0,1]))
-    print(encode1.get_input([0,0,1,0]))
-    print(encode1.get_input([0,1,0,0]))
-    print(encode1.get_input([1,0,0,0]))
-    print(encode1.get_input([0,0,0,0,1,0]))
-    print(encode1.get_input([0,0,0,1,0,0,0]))
-    print(encode1.get_input(["a",3,4]))
-    print(encode1.get_input([2,3,4]))
-    print(encode1.get_input([1,0,1,0,0,0]))
-    print(encode1.get_input([1,1,0,0,0]))
+    print(encode1.encoder_get([0,0,0,0]))
+    print(encode1.encoder_get([0,0,0,1]))
+    print(encode1.encoder_get([0,0,1,0]))
+    print(encode1.encoder_get([0,1,0,0]))
+    print(encode1.encoder_get([1,0,0,0]))
+
+    decoder1 = decoder(2)
+    print(decoder1.decoder_get(encode1.encoder_get([0,0,0,0])))
+    print(decoder1.decoder_get(encode1.encoder_get([0,0,0,1])))
+    print(decoder1.decoder_get(encode1.encoder_get([0,0,1,0])))
+    print(decoder1.decoder_get(encode1.encoder_get([0,1,0,0])))
+    print(decoder1.decoder_get(encode1.encoder_get([1,0,0,0])))
     
     
-    encode2 = encoder(8)
-    print(encode2.get_input([0,0,0,0,0,0,0,0]))
-    print(encode2.get_input([0,0,0,0,0,0,0,1]))
-    print(encode2.get_input([0,0,0,0,0,0,1,0]))
-    print(encode2.get_input([0,0,0,0,0,1,0,0]))
-    print(encode2.get_input([0,0,0,0,1,0,0,0]))
-    print(encode2.get_input([0,0,0,1,0,0,0,0]))
-    print(encode2.get_input([0,0,1,0,0,0,0,0]))
-    print(encode2.get_input([0,1,0,0,0,0,0,0]))
-    print(encode2.get_input([1,0,0,0,0,0,0,0]))
+    
+    
+
+
+    
+    
+    
+    
     
     
