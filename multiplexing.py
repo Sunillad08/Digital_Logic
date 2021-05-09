@@ -296,3 +296,17 @@ if __name__ == "__main__":
     print(d.get_current_pin())
     print(d.set_select_pin([1,1,0,1,1]))
     print(d.get_output_pin())
+
+    encoder1 = encoder(4)
+    print(encoder1.encoder_get([0,0,0,0]))
+    print(encoder1.encoder_get([0,0,0,1]))
+    print(encoder1.encoder_get([0,0,1,0]))
+    print(encoder1.encoder_get([0,1,0,0]))
+    print(encoder1.encoder_get([1,0,0,0]))
+
+    decoder1 = decoder(2)
+    print(decoder1.decoder_get(encoder1.encoder_get([0,0,0,0])))
+    print(decoder1.decoder_get(encoder1.encoder_get([0,0,0,1])))
+    print(decoder1.decoder_get(encoder1.encoder_get([0,0,1,0])))
+    print(decoder1.decoder_get(encoder1.encoder_get([0,1,0,0])))
+    print(decoder1.decoder_get(encoder1.encoder_get([1,0,0,0])))
