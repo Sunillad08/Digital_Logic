@@ -6,6 +6,7 @@
 '''
 
 from Gates import logic_not
+from Conversion import decimal_to_binary , binary_to_decimal
 
 '''Ring counter'''
 class counter_ring:
@@ -111,14 +112,15 @@ class counter_ripple:
 
     # to get next value
     def next(self):
+
+        decimal = binary_to_decimal(self.__current_value)
+        decimal += 1
+
+        if decimal >= 2**(self.count_bits):
+            decimal = 0
         
-        '''After conversion file is finished change this'''
-        
-        self.__current_int += 1
-        if self.__current_int >= 2**(self.count_bits):
-            self.__current_int = 0
-        temp = bin(self.__current_int)
-        temp = list(temp.replace("0b" , ""))
+        temp = decimal_to_binary(decimal)
+        temp = [str(i) for i in str(temp)] 
         
         while len(temp) < len(self.__current_value):
             temp.insert(0 , "0")
@@ -133,7 +135,7 @@ class counter_ripple:
 
 if __name__ == "__main__":
     '''Tested counter and currently works as charm'''
-    n = counter_ripple(4 , [0,1,1,0])
+    n = counter_ripple(2)
     print(n.now())
     for i in range(25):
         print(n.next())
