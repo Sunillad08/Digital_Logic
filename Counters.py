@@ -108,7 +108,7 @@ class counter_ripple:
         self.count_bits = count
         self.start = start
         self.__current_value = start
-        self.__current_int = int("".join([str(i) for i in self.__current_value]) , 2)
+        
 
     # to get next value
     def next(self):
