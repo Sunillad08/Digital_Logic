@@ -97,18 +97,19 @@ class comparator():
         if(int("".join(str(bit) for bit in self.inputno[0]),2) < int("".join(str(bit) for bit in self.inputno[1]),2)):
             return(1)
         else: return 0
- 
-comparator1 = comparator(2)
-comparator1.comparator_input([[1,1],[1,1]])
-print(comparator1.A_gt_B())
-print(comparator1.A_ls_B())
-print(comparator1.A_eq_B())
+        
+if __name__ == "__main__":
+    comparator1 = comparator(2)
+    comparator1.comparator_input([[1,1],[1,1]])
+    print(comparator1.A_gt_B())
+    print(comparator1.A_ls_B())
+    print(comparator1.A_eq_B())
 
-comparator2 = comparator(4)
-comparator2.comparator_input([[1,1,1,0],[1,0,0,0]])
-print(comparator2.A_gt_B())
-print(comparator2.A_ls_B())
-print(comparator2.A_eq_B())
+    comparator2 = comparator(4)
+    comparator2.comparator_input([[1,1,1,0],[1,0,0,0]])
+    print(comparator2.A_gt_B())
+    print(comparator2.A_ls_B())
+    print(comparator2.A_eq_B())
            
       
 
