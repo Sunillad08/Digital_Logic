@@ -5,8 +5,8 @@
 * Plan to upload this python project on pypi
 
 Contributors:
-> Sunil Lad
+> [Sunil Lad](https://github.com/Sunillad08)
 
-> Parth Khanolkar
+> [Parth Khanolkar](https://github.com/ParthKhanolkar)
 
-> Shrirang Joshi
+> [Shrirang Joshi](https://github.com/shriI950)
