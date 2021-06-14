@@ -16,7 +16,6 @@ setup(
   long_description=open('README.md').read(),
   url='https://github.com/Sunillad08/Digital_Logic',  
   author='Sunil Lad & Parth Khanolkar',
-  author_email='https://github.com/Sunillad08',
   license='MIT', 
   classifiers=classifiers,
   keywords='Logic circuit , pylogic', 
