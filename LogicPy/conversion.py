@@ -1,25 +1,27 @@
 '''
-Converting bases
-1.Binary to Decimal
-2.Binary to Hexadecimal
-3.Binary to Octal
-4.Decimal to Hexadecimal
-5.Decimal to Octal
-6.Decimal to Binary
-7.Octal to Hexadecimal
-8.Octal to Decimal
-9.Octal to Binary
-10.Hexadecimal to Octal
-11.Hexadecimal to Decimal
-12.Hexadecimal to Binary
-
-13.Binary to BCD 
-14.Binary to gray
-15.BCD to Binary
-16.BCD to gray
-17.Gray to Binary
-19.Gray to BCD
+Converting bases and codes\n
+type:function\n
+name-format: [name{from}]_to_[name{to}]\n
+Binary to Decimal\n
+Binary to Hexadecimal\n
+Binary to Octal\n
+Decimal to Hexadecimal\n
+Decimal to Octal\n
+Decimal to Binary\n
+Octal to Hexadecimal\n
+Octal to Decimal\n
+Octal to Binary\n
+Hexadecimal to Octal\n
+Hexadecimal to Decimal\n
+Hexadecimal to Binary\n
+Binary to BCD \n
+Binary to gray\n
+BCD to Binary\n
+BCD to gray\n
+Gray to Binary\n
+Gray to BCD
 '''
+
 '''Checking valuses are valid or not'''
 def _check_binary(binary):
     if isinstance(binary , str):
@@ -284,47 +286,3 @@ def gray_to_bcd(gray):
     '''gray -> binary -> bcd'''
     binary = gray_to_binary(gray)
     return binary_to_bcd(binary)
-
-
-if __name__ == "__main__": 
-    '''Tested everything!!'''
-    # data = ["0" , "1" , "10" , "11" , ['1' , '0' , '0' , '0'] , [1,0,1,0] , "1111"]
-    # for i in data:
-    #     print(binary_to_bcd(i))
-    # data = ["0" , "1" , "10" , "11" , ['1' , '0' , '0' , '0'] , [1,0,1,0] , "1111"]
-    # for i in data:
-    #     print(binary_to_octal(i))
-    # data = ["0" , "1" , "10" , "11" , ['1' , '0' , '0' , '0'] , [1,0,1,0] , "1111"]
-    # for i in data:
-    #     print(binary_to_hexadecimal(i))
-    # for i in range(1,100):
-    #     print(decimal_to_binary(str(i)))
-    # for i in range(1,20):
-    #     print(decimal_to_hexadecimal(i))
-    # for i in range(1,20):
-    #     print(decimal_to_octal(i))
-    # data = [11,12,13,14,15,16,17,'20','21','22','77']
-    # for i in data:
-    #     print(octal_to_decimal(i))
-    # data = [11,12,13,14,15,16,17,'20','21','22','77',00]
-    # for i in data:
-    #     print(octal_to_hexadecimal(i))
-    # data = [0,1,2,3,4,5,6,7,11,12,13,14,15,16,17,'20','21','22','77']
-    # for i in data:
-    #     print(octal_to_binary(i))
-    # data = [0,1,2,3,4,5,6,7,'a','b','c','D','e','F','10',11,12,13,14,15,16,17,'20','21','22','77','a','A','b','Abf' , '66']
-    # for i in data:
-    #     print(hexadecimal_to_decimal(i))
-    # data = [0,1,2,3,4,5,6,7,8,9,'a','b','c','D','e','F','10',11,12,13,14,15,16,17,'20','21','22','77','a','A','b','Abf' , '66']
-    # for i in data:
-    #     print(hexadecimal_to_binary(i))
-    # data = [0,1,2,3,4,5,6,7,8,9,'a','b','c','D','e','F','10',11,12,13,14,15,16,17,'20','21','22','77','a','A','b','Abf' , '66']
-    # for i in data:
-    #     print(hexadecimal_to_octal(i))
-    # data = ["0" , "1" , "10" , "11" , ['1' , '0' , '0' , '0'] , [1,0,1,0] , "1111"]
-    # for i in data:
-    #     print(binary_to_gray(i))
-    # print(bcd_to_binary([1,0,0,0,1,0,0,0]))
-    # print(bcd_to_gray([1,0,0,0]))
-    # print(gray_to_binary('110111'))
-    # print(gray_to_bcd('1100'))

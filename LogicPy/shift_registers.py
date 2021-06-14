@@ -1,3 +1,14 @@
+'''
+shift registers
+type:class\n
+name-format: shift_register_[name]\n
+SIPO\n
+PISO\n
+SISO\n
+PIPO
+'''
+
+'''SIPO'''
 class shift_register_SIPO():
     
     def __init__(self,level,inputno = None):
@@ -18,9 +29,7 @@ class shift_register_SIPO():
         else:
             raise ValueError("Input must be in a list format")
         self.inputno = inputno
-        
-                
-                
+
     def sr_get(self,clock):
         
         if(isinstance(clock,int)):
@@ -47,9 +56,7 @@ class shift_register_SIPO():
 
         return(og_list)  
         
-            
-            
-
+'''PISO'''
 class shift_register_PISO():
     
     def __init__(self,level,inputno = None):
@@ -71,8 +78,7 @@ class shift_register_PISO():
             raise ValueError("Input must be in a list format")
         self.inputno = inputno
         
-                
-                
+
     def sr_get(self,clock):
         
         if(isinstance(clock,int)):
@@ -86,26 +92,25 @@ class shift_register_PISO():
         
         input_cp = self.inputno.copy()
         og_list = []
-        for i in range(clock + 1):
+        for _ in range(clock + 1):
             
             #start from the least significant bit
             og_list.insert(0,input_cp[-1])
             input_cp.pop()
            
         if(len(og_list)  < self.level):
-            for val in range(self.level - len(og_list)):
+            for _ in range(self.level - len(og_list)):
                 og_list.append(0)
                 
-        
         return(og_list)  
-        
+
+'''SISO'''    
 class shift_register_SISO():
     
     def __init__(self,level,inputno = None):
         self.level = level
         self.inputno = inputno
         
-    
     def sr_set(self,inputno):
         
         #list input 
@@ -119,9 +124,7 @@ class shift_register_SISO():
         else:
             raise ValueError("Input must be in a list format")
         self.inputno = inputno
-        
-                
-                
+           
     def sr_get(self,clock):
         
         if(isinstance(clock,int)):
@@ -148,7 +151,7 @@ class shift_register_SISO():
 
         return(og_list) 
             
-
+'''PIPO'''
 class shift_register_PIPO():
     
     def __init__(self,level,inputno = None):
@@ -169,9 +172,8 @@ class shift_register_PIPO():
         else:
             raise ValueError("Input must be in a list format")
         self.inputno = inputno
-        
-                
-                
+
+     
     def sr_get(self,clock):
         
         if(isinstance(clock,int)):

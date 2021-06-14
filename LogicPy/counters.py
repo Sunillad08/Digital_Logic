@@ -1,12 +1,15 @@
 # Design counters
 '''
-1. Ring counter
-2. Jonhson counter
-3. Ripple counter
+counters\n
+type:class\n
+name-format: counter_[name]\n
+Ring counter\n
+Jonhson counter\n
+Ripple counter
 '''
 
-from Gates import logic_not
-from Conversion import decimal_to_binary , binary_to_decimal
+from LogicPy.gates import logic_not
+from LogicPy.conversion import decimal_to_binary , binary_to_decimal
 
 '''Ring counter'''
 class counter_ring:
@@ -132,12 +135,4 @@ class counter_ripple:
     def now(self):
         return self.__current_value
 
-
-if __name__ == "__main__":
-    '''Tested counter and currently works as charm'''
-    n = counter_ripple(2)
-    print(n.now())
-    for i in range(25):
-        print(n.next())
-         
 
