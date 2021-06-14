@@ -1,29 +1,18 @@
-## Designing flip flop logic for 
 '''
-1. NOR Latch
-2. NAND latch
-3. SR flip flop
-4. D flip flop
-5. JK flip flop
-6. Master slave JK flip flop
-7. T flip flop
-'''
-
-# format to define functions
-
-'''
-define function(Input1 , Input2 , clock)
-Input1 and Input2 : *args
-clock : *args should have same length as Inputs
-return output in list/tuple (decide!)
+flipflops\n
+type:function\n
+name-format: flip_flop_[name] | latch_[name]\n
+NOR Latch\n
+NAND latch\n
+SR flip flop\n
+D flip flop\n
+JK flip flop\n
+Master slave JK flip flop\n
+T flip flop
 '''
 
-'''
-Normalize values above 1 to 1 and below 1 to 0
-'''
-
-from main_functions import *
-from Gates import *
+from __main_functions import *
+from gates import *
 
 '''Nor latch'''
 def latch_nor(s , r , q , clock):
@@ -136,60 +125,5 @@ def flip_flop_jk(j , k , q , clock , master_slave = False):
         else:
             return flip_flop_sr(j , k , q , clock , active="high")
     
-    # raising ValueError
     else:
         raise ValueError("Invalid Values!")
-        
-    
-if __name__ == "__main__":
-
-    def check_possible_combinations2(func):
-        print("Clock : 0 , q : 1")
-        print(func(0 , 0 , 0 ))
-        print(func(0 , 0 , 0 ))
-        print(func(1 , 0 , 0 ))
-        print(func(1 , 0 , 0 ))
-        print("Clock : 0 , q : 1")
-        print(func(0 , 1 , 0 ))
-        print(func(0 , 1 , 0 ))
-        print(func(1 , 1 , 0 ))
-        print(func(1 , 1 , 0 ))
-        print("Clock : 1 , q : 0")
-        print(func(0 , 0 , 1 ))
-        print(func(0 , 0 , 1 ))
-        print(func(1 , 0 , 1 ))
-        print(func(1 , 0 , 1 ))
-        print("Clock : 1 , q : 1")
-        print(func(0 , 1 , 1 ))
-        print(func(0 , 1 , 1 ))
-        print(func(1 , 1 , 1 ))
-        print(func(1 , 1 , 1 ))
-        print(f"Ended checking {func.__name__}\n")
-    
-    def check_possible_combinations3(func):
-        print("Clock : 0 , q : 0")
-        print(func(0 , 0 , 0 , 0 , master_slave=True))
-        print(func(0 , 1 , 0 , 0 , master_slave=True))
-        print(func(1 , 0 , 0 , 0 , master_slave=True))
-        print(func(1 , 1 , 0 , 0 , master_slave=True))
-        print("Clock : 0 , q : 1")
-        print(func(0 , 0 , 1 , 0 , master_slave=True))
-        print(func(0 , 1 , 1 , 0 , master_slave=True))
-        print(func(1 , 0 , 1 , 0 , master_slave=True))
-        print(func(1 , 1 , 1 , 0 , master_slave=True))
-        print("Clock : 1 , q : 0")
-        print(func(0 , 0 , 0 , 1 , master_slave=True))
-        print(func(0 , 1 , 0 , 1 , master_slave=True))
-        print(func(1 , 0 , 0 , 1 , master_slave=True))
-        print(func(1 , 1 , 0 , 1 , master_slave=True))
-        print("Clock : 1 , q : 1")
-        print(func(0 , 0 , 1 , 1 , master_slave=True))
-        print(func(0 , 1 , 1 , 1 , master_slave=True))
-        print(func(1 , 0 , 1 , 1 , master_slave=True))
-        print(func(1 , 1 , 1 , 1 , master_slave=True))
-        print(f"Ended checking {func.__name__}\n")
-
-    #check_possible_combinations3(flip_flop_jk)
-    check_possible_combinations2(flip_flop_t)
-    #check_possible_combinations(latch_nand)
-    #check_possible_combinations(flip_flop_jk)

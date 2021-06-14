@@ -1,5 +1,9 @@
-from FlipFlop import *
-from Gates import *
-from multiplexing import *
-from main_functions import *
-from adder-subtractor import *
+import __main_functions
+import conversion
+import gates
+import flipflops
+import combination_logic
+import display_terminals
+import arithematic_circuit
+import counters
+import shift_registers

@@ -1,10 +1,10 @@
-## Design seven segment display
 '''
-Design seven segment display without decimal point,
-add functionality to pass diode values or hex numbers
+display terminals
+type:class\n
+name-format: [name]\n
+Seven segment display
 '''
 
-## output format string
 '''
   ###
  #   #
@@ -16,7 +16,7 @@ add functionality to pass diode values or hex numbers
 
 Output : 0-9 and a-f same as A-F
 '''
-
+'''Seven segment display'''
 class seven_segment_display():
     
     # to check inputs are valid or not
@@ -129,18 +129,3 @@ class seven_segment_display():
             number = number.upper()
             self.input = designs_for_characters[ord(number) - 65]
             return self.get_display_output()
-
-if __name__ == "__main__":
-    # while True:
-    # i = [0,0,0,0,1,1,1]
-    # s = seven_segment_display(i)
-    # #     random.shuffle(i)
-    # #     s.update_pins(i)
-    # #     print(s.get_display_output())
-    # #     print("\n\n\n")
-    # data = [0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","A","B","C","D","E","F"]
-    # with open("text1.txt","w") as f:
-    #     for i in data:
-    #         f.write(str(i)+"\n")
-    #         f.write(s.display_number(i))
-    #         f.write("\n\n\n\n")

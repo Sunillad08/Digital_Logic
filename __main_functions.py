@@ -1,16 +1,16 @@
-#All functions used in other program files are stored here
+'''Functions to validate values'''
 
-#Normalise Logic Values : Changes values to binary data for logic gates to work
-
+'''Correction to binary values'''
 def normalize_logic_values(*args):
     args = list(args)
     for i in range(len(args)):
-        if args[i] > 0:
+        if args[i] > 1.0:
             args[i] = 1
-        elif args[i] < 1:
+        else:
             args[i] = 0
     return args
 
+'''Correct format : int or float'''
 def valid_value(*args):
     bgr = [(isinstance(all_values,int) or isinstance(all_values,float)) for all_values in args] 
     if(all(bgr)):
