@@ -8,8 +8,8 @@ Jonhson counter\n
 Ripple counter
 '''
 
-from gates import logic_not
-from conversion import decimal_to_binary , binary_to_decimal
+from LogicPy.gates import logic_not
+from LogicPy.conversion import decimal_to_binary , binary_to_decimal
 
 '''Ring counter'''
 class counter_ring:

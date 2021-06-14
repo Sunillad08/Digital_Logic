@@ -1,16 +1,14 @@
 # Digital Logic Functions
 
-**Project implements basic to advance logic functions , flip flops and many more circuits**
+**Project implements basic to advance logic functions like gates , flip flops and many more circuits...**
 
-* Plan to upload this python project on pypi
-
-Contributors:
+## Contributors:
 > [Sunil Lad](https://github.com/Sunillad08)
 
 > [Parth Khanolkar](https://github.com/ParthKhanolkar)
 
 
-# Circuits and logics to implemented
+# Circuits and logics to be implemented
 
 ### First release : 
 

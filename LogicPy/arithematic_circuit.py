@@ -9,8 +9,8 @@ full subtractor\n
 comparator
 '''
 
-from main_functions import *
-from gates import *
+from LogicPy.main_functions import *
+from LogicPy.gates import *
 
 '''Half adder'''
 def half_adder(val1,val2):

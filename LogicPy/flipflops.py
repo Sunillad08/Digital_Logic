@@ -11,8 +11,8 @@ Master slave JK flip flop\n
 T flip flop
 '''
 
-from main_functions import *
-from gates import *
+from LogicPy.main_functions import *
+from LogicPy.gates import *
 
 '''Nor latch'''
 def latch_nor(s , r , q , clock):

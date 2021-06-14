@@ -11,7 +11,7 @@ XOR\n
 XNOR
 '''
 
-from main_functions import *
+from LogicPy.main_functions import *
 
 '''Logic AND'''
 def logic_and(val1, val2):
@@ -33,7 +33,6 @@ def logic_or(val1, val2):
 def logic_not(val):
   if valid_value(val):      
     val = normalize_logic_values(val)[0]
-    print(val)
     if val == 1:
       return 0
     else:
