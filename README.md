@@ -12,7 +12,7 @@
 
 ### First release : 
 
-- [Bases Conversion](conversion.py) 
+- [Bases Conversion](./LogicPy/conversion.py) 
     - Binary to Decimal
     - Binary to Hexadecimal
     - Binary to Octal
@@ -32,7 +32,7 @@
     - Gray to Binary
     - Gray to BCD
 
-- [Logic Gates](gates.py)
+- [Logic Gates](./LogicPy/gates.py)
     - AND gate
     - OR gate
     - NOT gate
@@ -41,7 +41,7 @@
     - XOR gate
     - XNOR gate
 
-- [Flip flops](flipflops.py) 
+- [Flip flops](./LogicPy/flipflops.py) 
     - Nand Latch
     - Nor Latch
     - SR flip flop
@@ -50,28 +50,28 @@
     - JK master slave flip flop
     - T flip flop
 
-- [Combinational Logic Circuits](combination_logic.py)
+- [Combinational Logic Circuits](./LogicPy/combination_logic.py)
     - Multiplexer
     - Demultiplexer
     - Encoder
     - Decoder
 
-- [Display terminals](display_terminals.py)
+- [Display terminals](./LogicPy/display_terminals.py)
     - Seven segment display
 
-- [Arithmetic Circuits](arithematic_circuit.py)
+- [Arithmetic Circuits](./LogicPy/arithematic_circuit.py)
     - Half adder
     - Full adder
     - Half subtractor
     - Full subtractor
     - Comparator
 
-- [Counter](counters.py)
+- [Counter](./LogicPy/counters.py)
   - Ring counter
   - Jonhson counter
   - Ripple counter 
 
-- [Shift Registers](shift_registers.py)
+- [Shift Registers](./LogicPy/shift_registers.py)
   - SISO
   - SIPO
   - PIPO
