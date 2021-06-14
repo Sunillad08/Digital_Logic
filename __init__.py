@@ -1,4 +1,4 @@
-import __main_functions
+import main_functions
 import conversion
 import gates
 import flipflops

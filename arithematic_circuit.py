@@ -9,7 +9,7 @@ full subtractor\n
 comparator
 '''
 
-from __main_functions import *
+from main_functions import *
 from gates import *
 
 '''Half adder'''

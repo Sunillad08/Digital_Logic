@@ -11,7 +11,7 @@ Master slave JK flip flop\n
 T flip flop
 '''
 
-from __main_functions import *
+from main_functions import *
 from gates import *
 
 '''Nor latch'''

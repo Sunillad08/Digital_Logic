@@ -11,7 +11,7 @@ XOR\n
 XNOR
 '''
 
-from __main_functions import *
+from main_functions import *
 
 '''Logic AND'''
 def logic_and(val1, val2):
